@@ -1,6 +1,6 @@
 import { myNote } from "./Note";
 
-import("../index.css")
+import("./index.css")
 
 // creating logo
 import Logo from "../image/logo.jpg"
