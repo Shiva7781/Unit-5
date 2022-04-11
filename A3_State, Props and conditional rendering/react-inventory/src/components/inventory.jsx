@@ -15,15 +15,15 @@ export const Inventory = () => {
 
             return
         }
-        if (items == "Books") {
+        if (items === "Books") {
 
             setInven({ ...inven, Books: value + changeBy })
         }
-        else if (items == "Notebooks") {
+        else if (items === "Notebooks") {
 
             setInven({ ...inven, Notebooks: value + changeBy })
         }
-        else if (items == "Pens") {
+        else if (items === "Pens") {
 
             setInven({ ...inven, Pens: value + changeBy })
         }
