@@ -1,6 +1,6 @@
-import { Flex, Button, Center,Heading, Spacer, Box } from "@chakra-ui/react";
+import { Flex, Button, Center, Heading, Spacer, Box } from "@chakra-ui/react";
 import { useContext } from "react";
-import { AuthContext } from "../Context/AuthContext";
+import { AuthContext } from "../context/AutContext";
 
 export const Navbar = () => {
   const { isAuth, toggleAuth, setIsLogin } = useContext(AuthContext);
@@ -11,13 +11,7 @@ export const Navbar = () => {
   };
 
   return (
-    <Flex
-      bg="#f3f3f3"
-      m={3}
-      border="1px"
-      boxShadow="base"
-      borderColor="gray.300"
-    >
+    <Flex bg="#f3f3f3" m={3} border="1px" boxShadow="base" borderColor="gray.300">
       <Box p="2">
         <Heading m={2}>User Login</Heading>
       </Box>

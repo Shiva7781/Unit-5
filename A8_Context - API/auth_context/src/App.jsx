@@ -1,13 +1,18 @@
-import Navbar from "./components/Navbar";
-import User from "./components/User";
+import { useState } from 'react'
+import logo from './logo.svg'
+import './App.css'
+import { Navbar } from './Components/Navbar'
+import { Form } from './Components/Form'
 
-const App = () => {
+function App() {
+  const [count, setCount] = useState(0)
+
   return (
-    <div className="app">
+    <div className="App" >
       <Navbar />
-      <User />
+      <Form/>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
