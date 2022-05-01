@@ -1,0 +1,19 @@
+{
+  "name": "a11_react-intro",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.9.5",
+    "vite-plugin-optimize-persist": "^0.1.2",
+    "vite-plugin-package-config": "^0.1.1"
+  },
+  "dependencies": {
+    "redux": "^4.2.0",
+    "uuid": "^8.3.2"
+  }
+}

@@ -1,0 +1,42 @@
+#app {
+  font-family: "Poppins", Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: teal;
+  font-size: 20px;
+  margin: 20px auto;
+}
+
+#todo_input,
+.btn {
+  padding: 7px 10px;
+  margin: 2px;
+  border-radius: 5px;
+}
+.btn {
+  color: white;
+  background-color: green;
+}
+
+form {
+  border-bottom: 1px solid rgb(207, 207, 207);
+  width: fit-content;
+  margin: auto;
+  padding: 10px;
+}
+#todo {
+  padding: 10px 20px;
+  font: size 15px;
+}
+#list{
+  max-width: 80%;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);margin:20px auto;
+}
+
+#list #todo {
+  border: 2px solid #7f97ae;
+  border-radius: 2px;
+  margin: 5px;
+}
