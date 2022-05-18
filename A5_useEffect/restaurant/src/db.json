@@ -104,6 +104,22 @@
       ],
       "itemCost": "221",
       "id": 16
+    },
+    {
+      "name": "Shiva",
+      "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGl6emF8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60",
+      "paymentMethods": {
+        "card": false,
+        "cash": false,
+        "upi": false
+      },
+      "votes": "5",
+      "review": "5",
+      "categories": [
+        "my fav"
+      ],
+      "itemCost": "77",
+      "id": 17
     }
   ]
 }
