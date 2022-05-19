@@ -4,6 +4,7 @@ import RestaurantDetails from "./component/RestaurantDetails";
 import "./App.css";
 
 function App() {
+  
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [paymentMethods, setPaymentMethods] = useState({
@@ -16,10 +17,12 @@ function App() {
   const [categories, setCategories] = useState("");
   const [itemCost, setItemCost] = useState(0);
   const [restaurents, setRestaurents] = useState([]);
-  const [sortRes, setSortRes] = useState([]);
-
+  const [sortRes, setSortRes] = useState([false]);
+console.log(restaurents,"restaurents")
   const createRestaurent = async (e) => {
+
     e.preventDefault();
+    
     const singleRest = {
       name,
       image,
@@ -29,11 +32,18 @@ function App() {
       categories: categories.split(","),
       itemCost,
     };
-    await axios.post("http://localhost:8080/restaurents", singleRest);
+    if((image!="")&&(name!="")&&(review!="")&&(categories!="")){
+      await axios.post("http://localhost:8080/restaurents", singleRest);
+    }
+    else{
+      alert("fill details")
+    }
+ 
   };
 
   const fetchRestaurents = async () => {
     const { data } = await axios("http://localhost:8080/restaurents");
+   
     setRestaurents(data);
   };
 
@@ -41,10 +51,50 @@ function App() {
     fetchRestaurents();
   }, []);
 
-  const handleSort = (val = 0) => {
-    setSortRes(restaurents.filter((ele) => Number(ele.review) > val).sort((a, b) => Number(a.review) - Number(b.review)));
-  };
+  const handleSort = (val) => {
+ 
+    console.log(val)
+    
+      var arr=[]
+    restaurents.map((e)=>{
+        if((e.review>=val)&&(e.review<val+1)){
+           arr.push(e)
+        }
+        
 
+    })
+  
+     
+     
+      setSortRes([...arr])
+        
+  };
+function Sort(e){
+  if(restaurents.length>0&&e=="high"){
+    restaurents.sort(function (a, b) {
+      return b.itemCost - a.itemCost;
+    });
+    setRestaurents([...restaurents])
+  }
+  else if(restaurents.length>0&&e=="low"){
+    restaurents.sort(function (a, b) {
+      return a.itemCost - b.itemCost;
+    });
+    setRestaurents([...restaurents])
+  }
+  else if(e=="high"){
+    sortRes.sort(function (a, b) {
+      return b.itemCost - a.itemCost;
+    });
+    setSortRes([...sortRes])
+  }
+ else if(e=="low"){
+    sortRes.sort(function (a, b) {
+      return a.itemCost - b.itemCost;
+    });
+    setSortRes([...sortRes])
+  }
+}
   return (
     <div className="app">
       <h1>React Restaurents</h1>
@@ -104,13 +154,32 @@ function App() {
         <button onClick={() => handleSort(2)}>2 star</button>
         <button onClick={() => handleSort(3)}>3 star</button>
         <button onClick={() => handleSort(4)}>4 star</button>
+        <h2>Price high to low</h2>
+        <button onClick={() => Sort("high")}>high to low</button>
+        <h2>low to high</h2>
+        <button onClick={() => Sort("low")}>low to high</button>
       </div>
 
-      {sortRes.length <= 0
-        ? restaurents.map((restaurent) => <RestaurantDetails key={restaurent.id} restaurent={restaurent} />)
-        : sortRes.map((restaurent) => <RestaurantDetails key={restaurent.id} restaurent={restaurent} />)}
+      {(()=>{
+        console.log(sortRes)
+        if(sortRes[0]===false){
+          return  restaurents.map((restaurent) => <RestaurantDetails key={restaurent.id} restaurent={restaurent} />)
+        }
+        else if(sortRes.length ==0){
+          return null
+        }
+        else{
+          return sortRes.map((restaurent) => <RestaurantDetails key={restaurent.id} restaurent={restaurent} />)
+        }
+      })
+      
+       ()}  
     </div>
   );
 }
 
 export default App;
+// {sortRes.length <= 0
+//   ?
+//    restaurents.map((restaurent) => <RestaurantDetails key={restaurent.id} restaurent={restaurent} />)
+//    : sortRes.map((restaurent) => <RestaurantDetails key={restaurent.id} restaurent={restaurent} />)}  
